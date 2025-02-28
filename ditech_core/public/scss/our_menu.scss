@@ -1,0 +1,29 @@
+.our-menu {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: var(--margin-md);
+  .label {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: var(--text-lg);
+  }
+
+  .pos-card {
+    background-color: var(--fg-color);
+    box-shadow: var(--shadow-base);
+    border-radius: var(--border-radius-md);
+  }
+
+  .primary-action {
+    @extend .pointer-no-select;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding-sm);
+    margin-top: var(--margin-sm);
+    border-radius: var(--border-radius-md);
+    font-size: var(--text-lg);
+    font-weight: 700;
+  }
+}

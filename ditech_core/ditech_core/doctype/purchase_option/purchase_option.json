@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:title",
+ "creation": "2024-12-18 10:34:28.841741",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "apply_for_doc",
+  "column_break_kshp",
+  "auto_create_stock_entry"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "apply_for_doc",
+   "fieldtype": "Table MultiSelect",
+   "label": "Apply For",
+   "options": "Purchase Option Apply For",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kshp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auto_create_stock_entry",
+   "fieldtype": "Check",
+   "label": "Auto Create Stock Entry"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-12-18 10:34:28.841741",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "Purchase Option",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

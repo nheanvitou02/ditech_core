@@ -1,0 +1,206 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "autoname": "format:{pos_profile} - {label}",
+ "creation": "2024-09-30 10:25:13.305888",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "label",
+  "pos_floor",
+  "pos_invoice",
+  "invoice_merge",
+  "disabled",
+  "column_break_aige",
+  "pos_profile",
+  "invoice_split",
+  "index",
+  "status",
+  "company",
+  "section_break_fywo",
+  "column_break_tifh",
+  "menu_qr_code",
+  "url",
+  "logo",
+  "route",
+  "published",
+  "column_break_juoq",
+  "qr_code",
+  "qr_preview"
+ ],
+ "fields": [
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Label",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "depends_on": "eval: doc.label",
+   "fieldname": "pos_profile",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "POS Profile",
+   "options": "POS Profile"
+  },
+  {
+   "default": "0",
+   "fieldname": "index",
+   "fieldtype": "Int",
+   "label": "Index"
+  },
+  {
+   "default": "Opened",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Opened\nOccupied\nInvoiced\nReserved\nMerged\nPaid"
+  },
+  {
+   "fieldname": "pos_invoice",
+   "fieldtype": "Link",
+   "label": "POS Invoice",
+   "options": "POS Invoice"
+  },
+  {
+   "fieldname": "pos_floor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "POS Floor",
+   "options": "POS Floor"
+  },
+  {
+   "fieldname": "invoice_merge",
+   "fieldtype": "Data",
+   "label": "Invoice Merge"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "invoice_split",
+   "fieldtype": "Data",
+   "label": "Invoice Split"
+  },
+  {
+   "fieldname": "column_break_aige",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_fywo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "menu_qr_code",
+   "fieldtype": "Link",
+   "label": "Menu QR Code",
+   "options": "Menu QR Code"
+  },
+  {
+   "fetch_from": "menu_qr_code.long_url",
+   "fieldname": "url",
+   "fieldtype": "Small Text",
+   "label": "URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_juoq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.menu_qr_code",
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "qr_code",
+   "fieldtype": "Long Text",
+   "hidden": 1,
+   "label": "QR Code",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.menu_qr_code",
+   "fieldname": "qr_preview",
+   "fieldtype": "HTML",
+   "label": "QR Preview",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tifh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Route",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "published",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "published",
+ "links": [],
+ "modified": "2025-02-04 14:39:39.989559",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "POS Table",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "label"
+}

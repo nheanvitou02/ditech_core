@@ -1,0 +1,256 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-28 14:47:24.872129",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "party_details_section",
+  "party_type",
+  "column_break_txxk",
+  "party",
+  "column_break_skrc",
+  "status",
+  "company",
+  "section_break_aiwa",
+  "payment_type",
+  "payment_request_type",
+  "request_amount",
+  "currency",
+  "outstanding_amount",
+  "column_break_dizn",
+  "requested_date",
+  "mode_of_payment",
+  "payment_entry",
+  "column_break_qabc",
+  "require_date",
+  "references_section",
+  "references",
+  "section_break_uspx",
+  "amended_from",
+  "column_break_lkoh",
+  "column_break_qgsn"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_uspx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Batch Payment Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "payment_request_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Request Type",
+   "no_copy": 1,
+   "options": "\nOutward\nInward",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_dizn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qabc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lkoh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qgsn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Pending\nPaid\nPartly Paid\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Link",
+   "label": "Party Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_txxk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_skrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_aiwa",
+   "fieldtype": "Section Break",
+   "label": "Request Details"
+  },
+  {
+   "depends_on": "eval:doc.party_type",
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Party",
+   "options": "party_type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "party_details_section",
+   "fieldtype": "Section Break",
+   "label": "Party Details"
+  },
+  {
+   "default": "Today",
+   "fieldname": "requested_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Requested Date",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "request_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Request Amount",
+   "no_copy": 1,
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.party",
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "references",
+   "fieldtype": "Table",
+   "label": "Payment References",
+   "mandatory_depends_on": "eval:doc.party",
+   "no_copy": 1,
+   "options": "Batch Payment Request References"
+  },
+  {
+   "fieldname": "require_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Required Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "no_copy": 1,
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "outstanding_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Outstanding Amount",
+   "no_copy": 1,
+   "non_negative": 1,
+   "precision": "2",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "payment_entry",
+   "fieldtype": "Link",
+   "label": "Payment Entry",
+   "no_copy": 1,
+   "options": "Payment Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_type",
+   "fieldtype": "Select",
+   "label": "Payment Type",
+   "no_copy": 1,
+   "options": "\nPay\nReceive\nTransfer",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Payment Entry",
+   "link_fieldname": "custom_batch_payment_request"
+  }
+ ],
+ "modified": "2024-12-06 13:39:55.805677",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "Batch Payment Request",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Red",
+   "title": "Pending"
+  },
+  {
+   "color": "Green",
+   "title": "Paid"
+  },
+  {
+   "color": "Gray",
+   "title": "Cancelled"
+  }
+ ]
+}

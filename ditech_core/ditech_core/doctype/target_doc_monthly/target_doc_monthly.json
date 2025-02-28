@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-12 09:13:28.505751",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_bqzb",
+  "target_group",
+  "months",
+  "fiscal_year",
+  "target_qty",
+  "target__amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "target_group",
+   "fieldtype": "Link",
+   "label": "Target Group",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "months",
+   "fieldtype": "Data",
+   "label": "Months",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fiscal Year",
+   "options": "Fiscal Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target Qty"
+  },
+  {
+   "fieldname": "target__amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Target  Amount"
+  },
+  {
+   "fieldname": "section_break_bqzb",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-13 16:24:14.380701",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "Target Doc Monthly",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,46 @@
+<style>
+  .qr-code {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    padding: 4px 40px;
+  }
+  .qr-code img {
+    max-width: 25rem;
+    padding: 25px;
+    border: 4px solid #f2702242;
+    border-radius: 40px;
+  }
+  .detail-qr {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  .company-pow {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+  }
+</style>
+
+<div>
+  <div class="detail-qr">Our Menu!</div>
+  {% if doc.qr_code %}
+  <div class="qr-code">
+    <img src="{{doc.qr_code}}" />
+  </div>
+  {% endif %}
+  <div class="pt-4">
+    <div class="text-center">
+      <p>Powered by</p>
+    </div>
+    <div class="company-pow">
+      <a target="_blank" href="https://103ditech.com"
+        ><img
+          src="/assets/ditech_core/images/company_logo.jpg"
+          style="height: 3.5rem"
+      /></a>
+    </div>
+  </div>
+</div>

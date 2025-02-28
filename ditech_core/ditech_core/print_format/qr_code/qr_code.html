@@ -1,0 +1,32 @@
+<style>
+  .company,
+  .qr-code {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .company img {
+    max-width: 20rem;
+  }
+  .qr-code {
+    padding: 40px;
+  }
+  .qr-code img {
+    max-width: 25rem;
+    padding: 25px;
+    border: 4px solid #f2702242;
+    border-radius: 40px;
+  }
+</style>
+{% set data =get_data_shift_type(doc.name, doc.custom_company,
+doc.custom_reference_location) %}
+
+<div>
+  {% if data.logo %}
+  <div class="company"><img src="{{data.logo}}" /></div>
+  {% endif %} {% if data.qrcode %}
+  <div class="qr-code">
+    <img src="{{data.qrcode}}" />
+  </div>
+  {% endif %}
+</div>

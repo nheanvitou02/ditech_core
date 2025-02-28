@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-02 08:14:13.352195",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_nvkh",
+  "reference_type",
+  "id",
+  "document_reference",
+  "posting_date",
+  "company_tax_id",
+  "customer",
+  "supplier",
+  "customer_tax_id",
+  "total_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "ID"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Posting Date"
+  },
+  {
+   "bold": 1,
+   "fieldname": "section_break_nvkh",
+   "fieldtype": "Section Break",
+   "hide_border": 1
+  },
+  {
+   "fieldname": "reference_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Reference Type",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "label": "Customer"
+  },
+  {
+   "fieldname": "company_tax_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Company Tax ID"
+  },
+  {
+   "fieldname": "customer_tax_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Tax ID"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "document_reference",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Document Reference",
+   "options": "reference_type"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Data",
+   "label": "Supplier"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-01-08 08:17:26.081198",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "E Filing Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

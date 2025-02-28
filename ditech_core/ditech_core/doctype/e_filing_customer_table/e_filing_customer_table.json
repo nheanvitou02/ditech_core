@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-18 14:15:53.193577",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type_of_customer_english",
+  "type_of_customer_khmer"
+ ],
+ "fields": [
+  {
+   "fieldname": "type_of_customer_english",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type of Customer (English)"
+  },
+  {
+   "fieldname": "type_of_customer_khmer",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type of Customer (Khmer)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-25 11:20:48.853827",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "E Filing Customer Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

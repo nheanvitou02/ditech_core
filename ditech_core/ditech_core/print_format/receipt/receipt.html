@@ -1,0 +1,341 @@
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Siemreap:wght@100;300;400;700;900&display=swap");
+
+	.print-format table,
+	.print-format tr,
+	.print-format td {
+		line-height: 120%;
+		padding: 2px !important;
+		font-family: "Siemreap", sans-serif !important;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	@media screen {
+		.print-format {
+			width: 4in;
+			min-height: 5in;
+			padding: 1px !important;
+		}
+	}
+
+	.print-format th {
+		padding: 0px !important;
+		color: black;
+	}
+
+	.print-format,
+	div,
+	p,
+	span {
+		font-family: "Siemreap", sans-serif !important;
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	h4 {
+		margin-top: 0 !important;
+		margin-bottom: 4px !important;
+	}
+
+	.table {
+		margin-top: 6px !important;
+		margin-bottom: 0 !important;
+	}
+</style>
+{% set get_com = frappe.get_doc('Company', doc.company) %} {% set exchange =
+frappe.call("ditech_core.ditech_core.utils.get_currency_exchange") %} {% set
+data = get_data_print_pos_invoice(doc.pos_profile, doc.name) %} {% set print_exchange =
+data.exchange %} {% if not get_com.custom_hide_company %}
+<div style="
+	  display: inline-flex;
+	  padding-bottom: 4px;
+	  align-items: center;
+	  width: 100%;
+	">
+	<div style="width: 25%">
+		{% if get_com.company_logo %}
+		<img width="100px" src="{{ get_com.company_logo }}" alt="{{ get_com.name }}"
+			style="object-fit: contain; margin-top: 0% !important" />
+		{% endif %}
+	</div>
+	<div style="width: calc(100% - 50%); font-size: 14px; text-align: center">
+		{% if get_com.custom_second_company_name %}
+		<span><b>{{get_com.custom_second_company_name}}</b><br /></span>
+		{% endif %}
+		<span><b>{{get_com.name}}</b></span>
+	</div>
+	<div style="width: 25%"></div>
+</div>
+<div style="line-height: 120%">{% if get_com.tax_id %}
+	<p>
+		លេខអត្តសញ្ញាណកម្មសារពើពន្ធ (VAT TIN):
+		{{get_com.tax_id}}
+	</p>{% endif %}
+	{% if doc.company_address %} {% set addr = frappe.get_doc('Address',
+	doc.company_address) %}
+	<p>អាស័យដ្ឋាន: {{addr.address_line1}}, {{addr.city}}</p>
+	<p>លេខទំនាក់ទំនង: {{addr.phone }}</p>
+	{% endif %}
+</div>
+{% endif %}
+
+<h4 style="text-align: center; text-decoration: underline">
+	<b>បង្កាន់ដៃ / RECEIPT</b>
+</h4>
+<div style="display: flex; justify-content: space-between">
+	<div>
+		<div style="display: flex; justify-content: flex-start; gap: 30px">
+			<table>
+				<tr>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				max-width: 170px;
+				padding: 2px 0 !important;
+			  ">
+						អ្នកគិតលុយ : {{ frappe.get_fullname(doc.modified_by) }}
+					</td>
+					<td style="font-size: 12px !important; border: 0; padding: 0 !important"></td>
+				</tr>
+				<tr>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				max-width: 140px;
+				padding: 2px 0 !important;
+			  ">
+						អតិថិជន​ : {{doc.customer or (" ")}}
+					</td>
+					<td style="font-size: 12px !important; border: 0; padding: 0 !important"></td>
+				</tr>
+				{%if doc.contact_person%}{% set phone = frappe.get_doc("Contact",
+				doc.contact_person) %} {% if phone.phone %}
+				<tr>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				max-width: 140px;
+				padding: 2px 0 !important;
+			  ">
+						ទូរស័ព្ទ : {{phone.phone}}
+					</td>
+				</tr>
+				{% endif %} {%endif%} {%if doc.custom_pos_table%}
+				<tr>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				max-width: 140px;
+				padding: 2px 0 !important;
+			  ">
+						តុ : {% set doc_table = frappe.get_doc("POS Table",
+						doc.custom_pos_table)%} {{doc_table.label}}
+					</td>
+				</tr>
+				{%endif%}
+			</table>
+		</div>
+	</div>
+	<div>
+		<div style="display: flex; justify-content: flex-start; gap: 20px">
+			<table>
+				<tr>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				max-width: 140px;
+				padding: 2px 0 !important;
+			  ">
+						លេខវិក្កយបត្រ
+					</td>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				padding: 2px 0 !important;
+				padding-left: 4px !important;
+			  ">
+						{{ doc.custom_receipt_number or ""}}
+					</td>
+				</tr>
+				<tr>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				max-width: 140px;
+				padding: 2px 0 !important;
+			  ">
+						កាលបរិច្ឆេទ
+					</td>
+					<td style="
+				font-size: 12px !important;
+				border: 0;
+				padding: 2px 0 !important;
+				padding-left: 4px !important;
+			  ">
+						{{ frappe.format(doc.posting_date, {'fieldtype': 'Date'}) }}
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div>
+	<table class="table">
+		<tr>
+			<th style="width: 40%; background: #4b484833; padding-left: 6px !important;">
+				<b>បរិយាយមុខទំនិញ​ <br />
+					Item</b>
+			</th>
+			<th style="
+			text-align: center;
+			width: 12%;
+			background: #4b484833;
+		  ">
+				<b>បរិមាណ <br />
+					Qty</b>
+			</th>
+			<th style="
+			text-align: center;
+			width: 25%;
+			background: #4b484833;
+		  ">
+				<b>ថ្លៃឯកតា <br />
+					Unit Price</b>
+			</th>
+			<th style="
+			text-align: right;
+			background: #4b484833;
+				  padding-right: 6px !important;
+		  ">
+				<b>សរុប <br />
+					Amount</b>
+			</th>
+		</tr>
+		{% for item in doc.items %}{% set notes =
+		get_note_print_pos_invoice(item.name) %} {% set discount_percentage =
+		item.discount_percentage * -1 %} {% set discount_amount =
+		item.discount_amount * -1 %}
+		<tr>
+			<td style="border: none; padding: 2px">
+				{{loop.index}}. {{item.item_name}} {% if notes %} ({{notes}}) {% endif
+				%} {% if item.discount_percentage != 0 %}
+				<div style="padding-left: 8px">
+					{{ discount_percentage }} %
+				</div>
+				{% endif %}
+			</td>
+			<td style="text-align: center; border: none">{{item.qty}}</td>
+			<td style="text-align: center; border: none">
+				{{ item.get_formatted("price_list_rate") }} {% if item.discount_amount
+				!= 0 %}
+				<div>
+					{{ frappe.utils.fmt_money(discount_amount,
+					currency=print_exchange.from_currency) }}
+				</div>
+				{% endif %}
+			</td>
+			<td style="text-align: right; border: none">
+				{{ item.get_formatted("amount") }}
+			</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td colspan="3">ចំនួនសរុប / Total Qty</td>
+			<td style="text-align: right">{{ doc.get_formatted("total_qty") }}</td>
+		</tr>
+		<tr>
+			{% if data.vat_included %}<td colspan="3">សរុប​(រួមបញ្ចុលទាំងអាករ) / Total(VAT Included)</td>{% else %}
+			<td colspan="3" style="border: none !important;">សរុប / Total</td>
+			{% endif %}
+			<td style="text-align: right;border: none !important;">{{ doc.get_formatted("total") }}</td>
+		</tr>
+		{% if doc.discount_amount %}
+		<tr>
+			<td colspan="3" style="border: none !important">
+				បញ្ចុះតម្លៃ / Discount {{ doc.additional_discount_percentage }}%
+			</td>
+			<td style="text-align: right; border: none !important">
+				{{ doc.get_formatted("discount_amount") }}
+			</td>
+		</tr>
+		{% endif %}
+		<tr>
+			<td colspan="3">
+				សរុបចុងក្រោយ / Grand Total({{ print_exchange.from_currency }})
+			</td>
+			<td style="text-align: right">
+				<b>{{doc.get_formatted("grand_total")}}</b>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" style="border: none !important">
+				សរុបចុងក្រោយ / Grand Total({{ print_exchange.to_currency }})
+			</td>
+			<td style="text-align: right; border: none !important; font-weight: bold;">
+				{%- set total_amount = doc.grand_total -%} {%- set exchange_rate_total =
+				total_amount * print_exchange.exchange -%} {{
+				frappe.utils.fmt_money(exchange_rate_total,
+				currency=print_exchange.to_currency) }}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">Receiving :</td>
+			<td style="text-align: right"></td>
+		</tr>
+		{% for row in doc.payments %} {% if row.amount %}
+		<tr>
+			<td colspan="3" style="border: none !important">
+				{{ row.mode_of_payment }}
+			</td>
+			<td style="text-align: right; border: none !important">
+				{{ row.get_formatted("amount", doc) }}
+			</td>
+		</tr>
+		{% endif %} {% endfor %}
+		<tr>
+			<td colspan="3">
+				ប្រាក់អាប់ / Change({{ print_exchange.from_currency }})
+			</td>
+			<td style="text-align: right">
+				{{ doc.get_formatted("change_amount") }}
+			</td>
+		</tr>
+		{% set change_amount = doc.change_amount %} {% set exchange_amount =
+		change_amount * print_exchange.exchange %}
+		<tr>
+			<td colspan="3" style="border: none !important">
+				ប្រាក់អាប់ / Change({{ print_exchange.to_currency }})
+			</td>
+			<td style="text-align: right; border: none !important">
+				{{ frappe.utils.fmt_money(exchange_amount,
+				currency=print_exchange.to_currency) }}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				អត្រាប្ដូរប្រាក់ / Exchange Rate $1 = {{"{:,.2f}".format(exchange|float)
+				or ("0.00")}} ៛
+			</td>
+			<td style="text-align: right"></td>
+		</tr>
+		{%if doc.loyalty_program%} {% set p =
+		get_loyalty_points_print_pos_invoice(doc.customer, doc.name,
+		doc.loyalty_program, doc.due_date, doc.company)%}
+		<tr>
+			<td colspan="4" style="text-align: center; background: #4b484833">
+				{{p.points}}{{p.amount}}
+			</td>
+		</tr>
+		{%endif%}
+	</table>
+</div>
+{% if doc.custom_waiting_number %}
+<div style="text-align: center;
+    font-size: var(--text-8xl);
+    font-weight: bold;">
+  {{ "%02d"|format(doc.custom_waiting_number) }}
+</div>
+{%endif%}
+<div>{% if data.print_footer %} {{data.print_footer}} {% endif %}</div>

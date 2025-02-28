@@ -1,0 +1,221 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "creation": "2024-12-04 10:38:27.763427",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "qr_name",
+  "key",
+  "route",
+  "long_url",
+  "short_url",
+  "column_break_wyaa",
+  "logo",
+  "qr_code",
+  "qr_preview",
+  "published",
+  "website_tab",
+  "selling_price_list",
+  "slideshow",
+  "column_break_laew",
+  "website_logo",
+  "primary_color",
+  "informations_section",
+  "profile",
+  "cover",
+  "company_name",
+  "description",
+  "column_break_hsrc",
+  "informations",
+  "items_section",
+  "items",
+  "categories_section",
+  "categories"
+ ],
+ "fields": [
+  {
+   "fieldname": "qr_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "QR Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Route",
+   "read_only": 1
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "qr_code",
+   "fieldtype": "Long Text",
+   "hidden": 1,
+   "label": "QR Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wyaa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "long_url",
+   "fieldtype": "Small Text",
+   "label": "Long URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "short_url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Short URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "qr_preview",
+   "fieldtype": "HTML",
+   "label": "QR Preview",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "published",
+   "read_only": 1
+  },
+  {
+   "fieldname": "categories_section",
+   "fieldtype": "Section Break",
+   "label": "Categories"
+  },
+  {
+   "fieldname": "categories",
+   "fieldtype": "Table",
+   "label": "Categories",
+   "options": "Menu QR Code Category"
+  },
+  {
+   "fieldname": "slideshow",
+   "fieldtype": "Link",
+   "label": "Slideshow",
+   "options": "Website Slideshow"
+  },
+  {
+   "fieldname": "selling_price_list",
+   "fieldtype": "Link",
+   "label": "Price List",
+   "options": "Price List"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Menu Category Item"
+  },
+  {
+   "fieldname": "website_tab",
+   "fieldtype": "Tab Break",
+   "label": "Website"
+  },
+  {
+   "fieldname": "column_break_laew",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "website_logo",
+   "fieldtype": "Attach Image",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "primary_color",
+   "fieldtype": "Color",
+   "label": "Primary Color"
+  },
+  {
+   "fieldname": "key",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Key",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "informations_section",
+   "fieldtype": "Section Break",
+   "label": "Informations"
+  },
+  {
+   "fieldname": "informations",
+   "fieldtype": "Table",
+   "label": "Informations",
+   "options": "Menu Information"
+  },
+  {
+   "fieldname": "profile",
+   "fieldtype": "Attach Image",
+   "label": "Profile"
+  },
+  {
+   "fieldname": "cover",
+   "fieldtype": "Attach Image",
+   "label": "Cover"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_hsrc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
+  }
+ ],
+ "has_web_view": 1,
+ "index_web_pages_for_search": 1,
+ "is_published_field": "published",
+ "links": [],
+ "modified": "2025-02-04 08:51:44.339802",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "Menu QR Code",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "qr_name",
+ "track_changes": 1
+}

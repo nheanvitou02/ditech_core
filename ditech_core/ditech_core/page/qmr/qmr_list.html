@@ -1,0 +1,37 @@
+{% for d in data %}
+<div class="mr-list-item" style="font-size: 14px;">
+	<div class="item-row" style="padding: 8px 0; align-items: center;">
+		<div class="col-sm-6 row" style="align-items: center;">
+			<img style="object-fit: cover;height: 6rem;width: 6rem;overflow: hidden;" src="{{ d.image }}" />
+			<div style="display: flex; flex-direction: column; width: calc(100% - 6rem); padding-left: 12px">
+				{% if show_item %}
+				<span data-type="item" data-name="{{ d.item_code }}">{{ d.item_code }}
+					{% if d.item_name != d.item_code %}({{ d.item_name }}){% endif %}
+				</span>
+				<span style="color: red; font-size: 12px" data-name="{{ d.stock_uom }}">( {{ d.stock_uom }} )</span>
+				{% endif %}
+			</div>
+		</div>
+		<div class="col-sm-2" title="{{ __(" Total Actual Qty") }}">
+			<a data-name="{{ d.total_actual_qty }}">{{ d.total_actual_qty }}</a>
+		</div>
+		<div class="col-sm-1" title="{{ __(" Actual Qty") }}">
+			<a data-name="{{ d.actual_qty }}">{{ d.actual_qty }}</a>
+		</div>
+		<div class="col-sm-3 text-right item-action" data-actual_qty="{{ d.actual_qty }}"
+				data-total_actual_qty="{{ d.total_actual_qty }}" data-uom="{{ escape(d.stock_uom) }}"
+				data-item="{{ escape(d.item_code) }}">
+			<button class="btn btn-secondary btn-sm btn-left"><svg class="icon icon-sm" aria-hidden="true">
+					<use class="" href="#icon-left"></use>
+				</svg></button>
+			<div class="page-text item-qty" style="width: 2.5rem;">
+				<input class="current-page-number" style="width: 100%;" type="text" value="{{d.qty}}"/>
+			</div>
+			<button class="btn btn-secondary btn-sm btn-right"><svg class="icon icon-sm" aria-hidden="true">
+					<use class="" href="#icon-right"></use>
+				</svg></button>
+		</div>
+	</div>
+</div>
+</div>
+{% endfor %}

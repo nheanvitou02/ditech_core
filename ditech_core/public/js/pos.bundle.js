@@ -1,0 +1,12 @@
+import "../../ditech_core/page/pos/pos_item_selector.js";
+import "../../ditech_core/page/pos/pos_table_selector.js";
+import "../../ditech_core/page/pos/pos_item_cart.js";
+import "../../ditech_core/page/pos/pos_item_details.js";
+import "../../ditech_core/page/pos/pos_number_pad.js";
+import "../../ditech_core/page/pos/pos_payment.js";
+import "../../ditech_core/page/pos/pos_past_order_list.js";
+import "../../ditech_core/page/pos/pos_past_order_summary.js";
+import "../../ditech_core/page/pos/pos_customer_order_list.js";
+import "../../ditech_core/page/pos/pos_customer_order_summary.js";
+import "../../ditech_core/page/pos/pos_controller.js";
+import "../../ditech_core/page/pos/pos_item_kitchen.js";

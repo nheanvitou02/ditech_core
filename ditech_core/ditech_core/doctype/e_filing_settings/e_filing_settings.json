@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-18 14:19:19.945007",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company_tab",
+  "type_of_company",
+  "section_break_xyem",
+  "data_qnvn"
+ ],
+ "fields": [
+  {
+   "fieldname": "data_qnvn",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "company_tab",
+   "fieldtype": "Tab Break",
+   "label": "Company"
+  },
+  {
+   "fieldname": "type_of_company",
+   "fieldtype": "Table",
+   "label": "Type of Company",
+   "options": "E Filing Company Table"
+  },
+  {
+   "fieldname": "section_break_xyem",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-02-10 14:39:19.435716",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "E Filing Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

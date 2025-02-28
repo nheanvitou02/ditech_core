@@ -1,0 +1,24 @@
+{
+ "content": null,
+ "creation": "2024-10-23 08:42:44.365289",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2024-10-23 08:58:55.336208",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "bar-kitchen",
+ "owner": "Administrator",
+ "page_name": "bar-kitchen",
+ "restrict_to_domain": "Retail",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Bar/Kitchen"
+}

@@ -1,0 +1,9 @@
+.DS_Store
+*.pyc
+*.egg-info
+*.swp
+tags
+ditech_core/public/dist
+node_modules
+__pycache__
+ditech_core/public/images/barcode/*

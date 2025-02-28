@@ -1,0 +1,33 @@
+{
+ "content": null,
+ "creation": "2024-11-19 09:14:25.237315",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2024-11-20 10:55:34.200338",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "pos",
+ "owner": "Administrator",
+ "page_name": "pos",
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "Sales Manager"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Point of Sale"
+}

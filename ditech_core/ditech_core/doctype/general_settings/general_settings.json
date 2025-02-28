@@ -1,0 +1,42 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-15 17:10:10.104856",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "auto_item_code"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "description": "Example:{Item Code} -  {Company Abbr}",
+   "fieldname": "auto_item_code",
+   "fieldtype": "Check",
+   "label": "Automatically generate item codes for items"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-12-17 10:16:35.683341",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "General Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,74 @@
+<div class="form-grid-container">
+    <div class="form-grid" style="width:100%">
+        <div class="grid-heading-row" style="text-align: center">
+            <div class="grid-row">
+                <div class="data-row row" style="margin-right:-15px;">
+                    <div class="col grid-static-col col-xs-3" data-fieldname="material_request" data-fieldtype="Link"
+                        title="Material Request">
+                        <div class="field-area" style="display: none;"></div>
+                        <div class="static-area ellipsis"><b>Material Request</b></div>
+                    </div>
+                    <div class="col grid-static-col col-xs-3" data-fieldname="purchase_order" data-fieldtype="Link"
+                        title="Purchase Order">
+                        <div class="field-area" style="display: none;"></div>
+                        <div class="static-area ellipsis"><b>Purchase Order</b></div>
+                    </div>
+                    <div class="col grid-static-col col-xs-3" data-fieldname="purchase_receipt" data-fieldtype="Link"
+                        title="Purchase Receipt">
+                        <div class="field-area" style="display: none;"></div>
+                        <div class="static-area ellipsis"><b>Purchase Receipt</b></div>
+                    </div>
+                    <div class="col grid-static-col col-xs-3" data-fieldname="purchase_invoice" data-fieldtype="Link"
+                        title="Purchase Invoice">
+                        <div class="field-area" style="display: none;"></div>
+                        <div class="static-area ellipsis"><b>Purchase Invoice</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-body">
+            <div class="rows">
+                <div class="grid-row">
+                    <div class="data-row row">
+                        <div class="col" data-fieldname="material_request" style="margin-left: 80px;"
+                            data-fieldtype="Link" title="Material Request">
+                            {% for mr in data.material_request %}
+                            <div style="line-height:2">
+                                <span class="indicator-pill no-indicator-dot whitespace-nowrap green">{{mr.state}}</span>
+                                <a href="/app/material-request/{{mr.name}}" target="_blank">{{mr.name}}</a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col" data-fieldname="purchase_order" data-fieldtype="Link" style="margin-left: 80px;"
+                            title="Purchase Order">
+                            {% for po in data.purchase_order %}
+                            <div style="line-height:2">
+                                <span class="indicator-pill no-indicator-dot whitespace-nowrap green">{{po.state}}</span>
+                                <a href="/app/purchase-order/{{po.name}}" target="_blank">{{po.name}}</a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col" data-fieldname="purchase_receipt" style="margin-left: 80px;"
+                            data-fieldtype="Link" title="Purchase Receipt">
+                            {% for pr in data.purchase_receipt %}
+                            <div style="line-height:2">
+                                <span class="indicator-pill no-indicator-dot whitespace-nowrap green">{{pr.state}}</span>
+                                <a href="/app/purchase-receipt/{{pr.name}}" target="_blank">{{pr.name}}</a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col" data-fieldname="purchase_invoice" style="margin-left: 80px;"
+                            data-fieldtype="Link" title="Purchase Invoice">
+                            {% for pi in data.purchase_invoice %}
+                            <div style="line-height:2">
+                                <span class="indicator-pill no-indicator-dot whitespace-nowrap green">{{pi.state}}</span>
+                                <a href="/app/purchase-invoice/{{pi.name}}" target="_blank">{{pi.name}}</a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

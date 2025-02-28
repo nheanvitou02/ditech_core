@@ -1,0 +1,76 @@
+[
+ {
+  "data_qnvn": null,
+  "docstatus": 0,
+  "doctype": "E Filing Settings",
+  "modified": "2025-02-05 08:53:40.299350",
+  "name": "E Filing Settings",
+  "type_of_company": [
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_company",
+    "parenttype": "E Filing Settings",
+    "type_of_company_english": "VAT 10%",
+    "type_of_company_khmer": "អតប អត្រា 10%"
+   },
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_company",
+    "parenttype": "E Filing Settings",
+    "type_of_company_english": "VAT 0%",
+    "type_of_company_khmer": "អតប អត្រា 0% (VAT0)"
+   },
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_company",
+    "parenttype": "E Filing Settings",
+    "type_of_company_english": "Non-VAT",
+    "type_of_company_khmer": "មិនជាប់ អតប"
+   },
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_company",
+    "parenttype": "E Filing Settings",
+    "type_of_company_english": "VAT State charge 10%",
+    "type_of_company_khmer": "អតប បន្ទុករដ្ឋ 10%"
+   },
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_company",
+    "parenttype": "E Filing Settings",
+    "type_of_company_english": "VAT 10% & Non-VAT",
+    "type_of_company_khmer": "អតប អត្រា​ 10% និងមិនជាប់ អតប"
+   },
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_company",
+    "parenttype": "E Filing Settings",
+    "type_of_company_english": "VAT 10% & VAT 0%",
+    "type_of_company_khmer": "អតប អត្រា​ 10% និងអតប អត្រា 0%"
+   }
+  ],
+  "type_of_supplier": [
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_supplier",
+    "parenttype": "E Filing Settings",
+    "type_of_customer_english": "Taxable Person",
+    "type_of_customer_khmer": "បុគ្គលជាប់អាករ"
+   },
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_supplier",
+    "parenttype": "E Filing Settings",
+    "type_of_customer_english": "Non Taxable Person",
+    "type_of_customer_khmer": "បុគ្គលមិនជាប់អាករ"
+   },
+   {
+    "parent": "E Filing Settings",
+    "parentfield": "type_of_supplier",
+    "parenttype": "E Filing Settings",
+    "type_of_customer_english": "Oversea Company",
+    "type_of_customer_khmer": "ក្រុមហ៊ុនក្រៅប្រទេស"
+   }
+  ]
+ }
+]

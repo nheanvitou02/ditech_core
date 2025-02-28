@@ -1,0 +1,254 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2family=Siemreap:wght@100;300;400;700;900&display=swap");
+
+  .print-format {
+    font-family: "Siemreap", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 120%;
+  }
+
+  .container {
+    width: 24rem;
+    line-height: 1.5rem;
+    margin: 0 auto;
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .grid-cols-6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .grid-cols-12 {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
+  .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
+  .col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+
+  .col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
+  .col-span-9 {
+    grid-column: span 9 / span 9;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .border-b {
+    border-bottom: 1px solid var(--gray-400);
+  }
+
+  .border-t {
+    border-top: 1px solid var(--gray-400);
+  }
+
+  .pb-2 {
+    padding-bottom: 0.5rem;
+  }
+
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
+  .mt-1 {
+    margin-top: 0.25rem;
+  }
+</style>
+
+{% set data = get_closing_detail(doc.name) %}
+
+<div class="container">
+  <div class="grid grid-cols-6 gap-2 border-b pb-2">
+    <div class="col-span-2">
+      <p>{{_("Start")}}</p>
+      <p>{{_("End")}}</p>
+      <p>{{_("Start Shift By")}}</p>
+      <p>{{_("End Shift By")}}</p>
+      <p>{{_("Work Hours")}}</p>
+      <p>{{_("Station")}}</p>
+      <p>{{_("Shift ID")}}</p>
+    </div>
+    <div class="col-span-1">
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+    </div>
+    <div class="col-span-3 text-right">
+      <p>{{frappe.format(data.start, {'fieldtype': 'Datetime'})}}</p>
+      <p>{{frappe.format(data.end, {'fieldtype': 'Datetime'})}}</p>
+      <p>{{data.start_shift_by}}</p>
+      <p>{{data.end_shift_by}}</p>
+      <p>{{data.work_hours}}</p>
+      <p>{{data.station}}</p>
+      <p>{{data.shift_id}}</p>
+    </div>
+  </div>
+  <p class="text-center">{{data.pos_profile}}</p>
+  <div class="grid grid-cols-12 gap-2">
+    <p class="col-span-7 font-semibold">{{_("Item")}}</p>
+    <p class="col-span-1 text-right font-semibold">{{_("Qty")}}</p>
+    <p class="col-span-4 text-right font-semibold">{{_("Amount")}}</p>
+    <p class="col-span-7">{{_("Default Item Category")}}</p>
+    <p class="col-span-1 text-right">{{data.total_qty}}</p>
+    <p class="col-span-4 text-right">{{frappe.utils.fmt_money(data.net_total, currency=data.currency)}}</p>
+  </div>
+  <div class="border-b pb-2">
+    <p>{{_("Productline Name")}}</p>
+    <div>
+      {% for group in data["items"] %}
+      <p class="font-semibold">{{group.item_group}}</p>
+      {% for item in group["items"] %}
+      <div class="grid grid-cols-12">
+        <p class="col-span-7">{{item.item_name}}</p>
+        <p class="col-span-1 text-right">{{item.qty}}</p>
+        <p class="col-span-4 text-right">{{frappe.utils.fmt_money(item.base_rate, currency=data.currency)}}</p>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="grid grid-cols-12 gap-2 pb-2">
+    <p class="col-span-7"></p>
+    <p class="col-span-1 text-right">{{data.total_qty}}</p>
+    <p class="col-span-4 text-right">{{frappe.utils.fmt_money(data.net_total, currency=data.currency)}}</p>
+  </div>
+  <div class="grid grid-cols-12 gap-2 border-b pb-2">
+    <div class="col-span-7">
+      <p>{{_("Number of Customers")}}</p>
+      <p>{{_("Invoice")}}</p>
+      <p>{{_("Average Transaction Value")}}</p>
+      {{"<p>"+_("Average Value Per Customer")+"</p>" if data.average_val_per_cus else ""}}
+    </div>
+    <div class="col-span-1 text-right">
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+    </div>
+    <div class="col-span-4 text-right">
+      <p>{{data.number_of_customer}}</p>
+      <p>{{data.number_of_transaction}}</p>
+      <p>{{frappe.utils.fmt_money(data.average_tran_val, currency=data.currency)}}</p>
+      {{"<p>" + frappe.utils.fmt_money(data.average_val_per_cus, currency=data.currency) + "</p>" if
+      data.average_val_per_cus else ""}}
+    </div>
+  </div>
+  <div class="grid grid-cols-12 gap-2 border-b pb-2">
+    <div class="col-span-7 text-right">
+      <p>{{_("Net Total")}}</p>
+      <p>{{_("Discount")}}</p>
+      <!-- <p>Service Charge</p> -->
+      <p>{{_("Tax")}}</p>
+      <p>{{_("Grand Total")}}</p>
+      <p>{{_("Paid Amount")}}</p>
+      <p>{{_("Unpaid Amount")}}</p>
+    </div>
+    <div class="col-span-1 text-right">
+      <p>:</p>
+      <p>:</p>
+      <!-- <p>:</p> -->
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+    </div>
+    <div class="col-span-4 text-right">
+      <p>{{frappe.utils.fmt_money(data.net_total, currency=data.currency)}}</p>
+      <p>{{frappe.utils.fmt_money(data.discount_amount, currency=data.currency)}}</p>
+      <!-- <p>{{frappe.utils.fmt_money(data.service_charge, currency=data.currency)}}</p> -->
+      <p>{{frappe.utils.fmt_money(data.tax, currency=data.currency)}}</p>
+      <p>{{frappe.utils.fmt_money(data.grand_total, currency=data.currency)}}</p>
+      <p>{{frappe.utils.fmt_money(data.paid_amount, currency=data.currency)}}</p>
+      <p>{{frappe.utils.fmt_money(0, currency=data.currency)}}</p>
+    </div>
+  </div>
+  <div class="grid grid-cols-12 gap-2 border-b pb-2 mb-2">
+    <div class="col-span-7">
+      <p>{{_("Number of Invoice Not Tender")}}</p>
+      <p>{{_("Amount of Invoice Not Tender")}}</p>
+      <p>{{_("Number of Void Invoice")}}</p>
+      <p>{{_("All Amount of Void Invoice")}}</p>
+    </div>
+    <div class="col-span-1 text-right">
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+      <p>:</p>
+    </div>
+    <div class="col-span-4 text-right">
+      <p>{{data.number_tendor }}</p>
+      <p>{{frappe.utils.fmt_money(data.amount_tendor, currency=data.currency)}}</p>
+      <p>{{data.number_void }}</p>
+      <p>{{frappe.utils.fmt_money(data.amount_void, currency=data.currency)}}</p>
+    </div>
+  </div>
+  <p>{{_("Selling Cash By")}} {{data.pos_profile}}</p>
+  <p class="text-center mt-1">{{data.pos_profile}}</p>
+  <div>
+    {% for mode in data["mode_of_payment"] %}
+    <div>
+      <p>{{mode.mode_of_payment}}</p>
+      <div class="grid grid-cols-12 gap-2 text-right">
+        <p class="col-span-{{'3' if data.second_currency else '4'}}">{{data.currency}}</p>
+        <p class="col-span-{{'3' if data.second_currency else '4'}}">{{frappe.utils.fmt_money(mode.expected,
+          currency=data.currency)}}</p>
+        <p class="col-span-{{'3' if data.second_currency else '4'}}">{{frappe.utils.fmt_money(mode.closing,
+          currency=data.currency)}}</p>
+        {{"<p class='col-span-3'>"+frappe.utils.fmt_money(mode.second_closing, currency=data.second_currency)+"</p>" if
+        data.second_currency else ""}}
+      </div>
+    </div>
+    {% endfor %}
+    <div class="grid grid-cols-12 text-right">
+      <p class="col-span-{{'6' if data.second_currency else '8'}}">{{_("Total")}}:</p>
+      <p class="col-span-{{'3' if data.second_currency else '4'}} border-t">{{frappe.utils.fmt_money(data.total_closing,
+        currency=data.currency)}}</p>
+      {{"<p class='col-span-3 border-t'>"+frappe.utils.fmt_money(data.total_second_closing,
+        currency=data.second_currency)+"</p>" if data.second_currency else ""}}
+
+    </div>
+    <p>{{_("Over/Short")}}</p>
+    <div class="grid grid-cols-12 text-right">
+      <p class="col-span-9">{{
+        _("Short")+":" if data.over_short < 0 else _("Over")+":" if data.over_short> 0 else _("Over/Short")+":"
+          }}</p>
+      <p class="col-span-3">{{frappe.utils.fmt_money(data.over_short, currency=data.currency)}}</p>
+    </div>
+  </div>
+</div>

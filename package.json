@@ -1,0 +1,15 @@
+{
+  "name": "ditech_core",
+  "version": "1.0.0",
+  "description": "DiTech Core Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "onscan.js": "^1.5.2"
+  }
+}

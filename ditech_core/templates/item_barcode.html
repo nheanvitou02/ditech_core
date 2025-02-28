@@ -1,0 +1,75 @@
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+<div>
+  {%- for b in barcodes -%}
+  <div
+    class="barcode-container"
+    style="
+      width: 5cm;
+      height: 3cm;
+      line-height: 18px;
+      display: flex;
+      padding: 0 13px;
+      align-items: center;
+      font-weight: bold; 
+    "
+  >
+    <div style="width: 100%">
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <div>{{b.company}}</div>
+          <div class="text-clamp" style="font-size: 11px; width: 3cm">
+            {{b.item_name}}
+          </div>
+        </div>
+        {% if b.price %}
+        <div
+          style="
+            width: 2cm;
+            white-space: nowrap;
+            overflow: visible;
+            font-size: 11px;
+            text-align: right;
+          "
+        >
+          <span style="font-size: 20px"
+            >{{ frappe.utils.fmt_money(b.price, currency=b.currency) }}</span
+          >
+          <br />{{b.uom}}
+        </div>
+        {% endif %}
+      </div>
+      <div style="width: 100%; display: flex; justify-content: center">
+        <svg id="barcode-{{ loop.index }}"></svg>
+      </div>
+    </div>
+  </div>
+  <script>
+    JsBarcode("#barcode-{{ loop.index }}", "{{ b.barcode}}", {
+      format: "{{b.custom_type}}",
+      width: 1.7,
+      height: 30,
+      displayValue: true,
+      fontSize: 14,
+    });
+  </script>
+  {% endfor %}
+</div>
+
+<style>
+  body {
+    margin: 0 !important;
+  }
+  .text-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

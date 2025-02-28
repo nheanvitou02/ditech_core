@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{sales_person}-{YY}",
+ "creation": "2025-02-24 08:26:02.123995",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_svvh",
+  "sales_person",
+  "column_break_vftc",
+  "fiscal_year",
+  "sales_person_targets_section",
+  "target_team"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_person",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Person",
+   "options": "Sales Person",
+   "read_only": 1
+  },
+  {
+   "description": "Set targets Item Group-wise for this Sales Person.",
+   "fieldname": "sales_person_targets_section",
+   "fieldtype": "Section Break",
+   "label": "Sales Person Targets"
+  },
+  {
+   "fieldname": "section_break_svvh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "target_team",
+   "fieldtype": "Table",
+   "label": "Target Team",
+   "options": "Target Doc",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_vftc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fiscal Year",
+   "options": "Fiscal Year",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-27 09:00:26.064337",
+ "modified_by": "Administrator",
+ "module": "ditech_core",
+ "name": "Sales Person Target",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

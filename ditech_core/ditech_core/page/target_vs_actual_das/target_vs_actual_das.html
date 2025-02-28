@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Sale Dashboard</title>
+    <!-- For Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+
+    
+    <style>
+        .custom-card {
+            border-left: 8px solid #4e73df;
+            border-radius: 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .custom-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            filter: contrast(1.2);
+        }
+
+        .custom-card .card-body {
+            background-color: #f8f9fc;
+            padding: 1.5rem;
+        }
+
+        .custom-card .text-xs {
+            font-size: 12px;
+            color: #6e7dff;
+        }
+
+        .custom-card .text-primary {
+            color: #4e73df !important;
+        }
+
+        .custom-card .font-weight-bold {
+            font-weight: 700;
+        }
+
+        .sales-person-card {
+            border-left: 8px solid orange;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.103);
+            padding: 2rem 1.5rem;
+            transition: all 0.5s ease;
+            border-radius: 5px;
+        }
+
+        /* Hide the radio buttons */
+        .filter_group input[type="radio"] {
+            display: none;
+        }
+
+        /* Style for the labels */
+        .filter_group .custom-btn-label {
+            width: 120px;
+            margin-top: 2.5px;
+            padding: 6px 25px;
+            border: 1px solid #00000007;
+            border-radius: 8px; 
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-transform: capitalize;
+            background-color: #f5f5f5;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2vw;
+        }
+
+        /* Hover effect */
+        .filter_group .custom-btn-label:hover {
+            background-color: #ff8a00;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Active/checked effect */
+        .filter_group input[type="radio"]:checked + .custom-btn-label {
+            background-color: #4e73df;
+            color: white;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+
+        /* Apply spacing between the filter options */
+        .filter_group {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        /* Optional: Add a smooth transition effect for the label */
+        .filter_group .custom-btn-label {
+            transition: all 0.3s ease;
+        }
+        .sale-person-group {
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .no_data_found{
+            user-select: none;
+            line-height: 1px;
+        }
+        .no_data_found h2{
+            color: gray;
+        }
+        svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        
+    </style>
+</head>
+
+<body style="background-color:  #e6dede;">
+    <div class="container-fluid mt-4">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <!-- <h1 class="h3 mb-0 text-gray-800">Totals Item Group</h1> -->
+        </div>
+
+        <!-- Card Rows -->
+        <div class="row" id="totalActualCardsQty">
+
+        </div>
+
+    </div>
+
+    <!-- Filter Year , Quarterly, and Monthly-->
+    <div class="filter_container mt-5 ">
+        <h4 class="text-center font-weight-bold">Filter by timeframe</h4>
+        <div class="filter_group d-flex justify-content-center al mt-4 flex-wrap">
+
+            <div class=" filter_year">
+                <input type="radio" name="filterYear" id="filterYear" checked>
+                <label class="custom-btn-label" for="filterYear"><i class="fas fa-calendar-day"></i> Year</label>
+            </div>
+            <div class="filter_semester">
+                <input type="radio" name="filterYear" id="filterSemester" >
+                <label class="custom-btn-label" for="filterSemester"><i class="fas fa-calendar-day"></i> Semester</label>
+            </div>
+            <div class="filter_quater">
+                <input type="radio" name="filterYear" id="filterQuater" >
+                <label class="custom-btn-label" for="filterQuater" ><i class="fas fa-calendar-day"></i> Quarterly</label>
+            </div>
+            <div class="filter_monthly">
+                <input type="radio" name="filterYear" id="filterMonthly">
+                <label class="custom-btn-label" for="filterMonthly"><i class="fas fa-calendar-day"></i>Monthly</label>
+            </div>
+
+            <div class="align-items-center">
+                <select id="fiscalYearQty" class="custom-select user-select-none "style="overflow-y: auto;">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="align-items-center" >
+                <select id="filterGroupQty" class="custom-select user-select-none" style="overflow-y: auto;">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container-fluid mt-4" id="salesPersonContainerQty">
+
+
+
+    </div>
+
+
+</body>
+
+</html>
+
