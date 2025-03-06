@@ -71,7 +71,7 @@ def render_print_template(barcodes, item_code, item_name):
             ["price_list_rate", "currency"], as_dict=1
         )
         if item_price:
-            new_barcodes.append({**b, "price": item_price.price_list_rate, "currency": item_price.currency, "uom": b.get("uom"), "company": get_default_company(), "item_name": item_code})
+            new_barcodes.append({**b, "price": item_price.price_list_rate, "currency": item_price.currency, "uom": b.get("uom"), "company": get_default_company(), "item_name": item_name})
         else:
             new_barcodes.append({**b, "price": None, "currency": None, "uom": b.get("uom"), "company": get_default_company(), "item_name": item_name})
 

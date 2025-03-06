@@ -1,6 +1,10 @@
 import frappe
 from frappe.utils import unique
 from erpnext import get_default_company
+import subprocess
+
+def install_dependencies():
+    subprocess.call(["pip", "install", "-r", "../apps/ditech_core/requirements.txt"])
 
 @frappe.whitelist()
 def get_connection(**kwargs):

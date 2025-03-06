@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{sales_person}-{YY}",
+ "autoname": "format:Sales Person {sales_person} {fiscal_year}",
  "creation": "2025-02-24 08:26:02.123995",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -54,7 +54,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-02-27 09:00:26.064337",
+ "modified": "2025-02-28 07:35:34.912485",
  "modified_by": "Administrator",
  "module": "ditech_core",
  "name": "Sales Person Target",

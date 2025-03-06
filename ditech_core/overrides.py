@@ -193,7 +193,9 @@ class CustomPOSInvoice(POSInvoice):
         else:
             self.db_set("custom_receipt_number", self.name)
         self.db_set("custom_waiting_number", get_last_waiting_number(self.pos_profile))
-
+        
+        self.payments = [payment for payment in self.payments if payment.base_amount > 0]
+        
     def on_submit(self):
         # create the loyalty point ledger entry if the customer is enrolled in any loyalty program
         if not self.is_return and self.loyalty_program:

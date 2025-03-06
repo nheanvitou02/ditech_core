@@ -1,40 +1,4 @@
 <style>
-    :root {
-        --font-stack: "InterVariable", "Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        --text-tiny: 11px;
-        --text-2xs: 12px;
-        --text-xs: 12px;
-        --text-sm: 13px;
-        --text-md: 13px;
-        --text-base: 14px;
-        --text-lg: 16px;
-        --text-xl: 18px;
-        --text-2xl: 20px;
-        --text-3xl: 24px;
-        --text-4xl: 26px;
-        --text-5xl: 28px;
-        --text-6xl: 32px;
-        --text-7xl: 40px;
-        --text-8xl: 44px;
-        --text-9xl: 48px;
-        --text-10xl: 52px;
-        --text-11xl: 56px;
-        --text-12xl: 64px;
-        --weight-regular: 420;
-        --weight-medium: 500;
-        --weight-semibold: 600;
-        --weight-bold: 700;
-        --weight-black: 800;
-        --text-line-height-3xl: 115%;
-        --text-line-height-4xl: 160%;
-        --text-line-height-7xl: 140%;
-        --text-line-height-12xl: 130%;
-        --text-line-height-14xl: 120%;
-        --para-line-height-2-xs: 160%;
-        --para-line-height-sm: 150%;
-        --para-line-height-2xl: 148%;
-        --para-line-height-3xl: 140%;
-    }
 
     #tableSection table {
         width: 100%;
@@ -54,28 +18,18 @@
     }
 
     #tableSection .section-head {
-        font-size: var(--text-lg);
-        font-weight: var(--weight-semibold);
         letter-spacing: 0.015em;
-        color: var(--text-color);
         width: 100%;
         margin: 0;
-        margin-bottom: var(--margin-sm);
         cursor: default;
     }
 
     #tableSection .form-section-description {
         margin-bottom: 10px;
-        font-size: var(--text-base);
-        font-weight: var(--weight-regular);
         letter-spacing: 0.02em;
-        color: var(--heading-color);
     }
 
     caption {
-        color: var(--text-muted);
-        font-size: var(--text-sm);
-        font-weight: var(--weight-regular);
         letter-spacing: 0.02em;
     }
 
@@ -84,22 +38,34 @@
         outline: none;
         border: none;
     }
+    td .dropdown-toggle{
+        border: none !important;
+    }
+    td .dropdown-toggle::after {
+        display: none;
+        border: none;
+    }
+    .box-container-style{
+        padding: 10px 15px 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+    }
 </style>
+
 <div class="set-target-sales-per">
     <section class="d-flex" id="filterSection">
-        <p class="form-section-description"> </p>
         <!-- Filter fields will be added here with JavaScript -->
     </section>
     <hr>
-    <section id="tableSection" style="padding: var(--padding-sm) var(--padding-md);">
+    <section id="tableSection">
         <p class="section-head">Sales Person Targets</p>
         <p class="form-section-description">Set targets Item Group-wise for this Sales Person.</p>
-        <div>
+        <div class="qty-box box-container-style">
             <table>
                 <caption style="caption-side:top">Targets Qty(Monthly)</caption>
                 <thead>
                     <tr>
-                        <th>Target Team</th>
+                        <th>Target Team <span style="color:rgba(255, 0, 0, 0.452);">*</span></th>
                         <th>Jan</th>
                         <th>Feb</th>
                         <th>Mar</th>
@@ -113,53 +79,67 @@
                         <th>Nov</th>
                         <th>Dec</th>
                         <th>Total Qty</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
                 <tbody id="tableBodyQty">
                    <!-- td will render here form javascript -->
                     <tr  id="emptyDataQty" >
-                        <td colspan="14" colr class="text-center">
+                        <td colspan="15" class="text-center">
                             <p style="padding: 50px;">No data</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="button-group mt-3">
+                <button id="btnAddTargetQty" onclick="add_target_quantity_row()" class="btn btn-primary hide" >New Row</button>
+            </div>
+        </div>
+       
+            <div class="amount-box box-container-style mt-4">
+                <table>
+                    <caption style="caption-side:top ;margin-top: 10px;">Targets Amount(Monthly)</caption>
+                    <thead>
+                        <tr>
+                            <th>Target Team <span style="color:rgba(255, 0, 0, 0.452);">*</span></th>
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
+                            <th>May</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>Aug</th>
+                            <th>Sep</th>
+                            <th>Oct</th>
+                            <th>Nov</th>
+                            <th>Dec</th>
+                            <th>Total Qty</th>
+                            <th>Action</th>
+    
+                        </tr>
+                    </thead>
+                    <tbody id="tableBodyAmount">
+                       <!-- td will render here form javascript -->
+                        <tr  id="emptyDataAmount" >
+                            <td colspan="15" class="text-center">
+                                <p style="padding: 50px;">No data</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-group-left mt-3">
+                    <button id="btnAddTargetAmount" onclick="add_target_amount_row()" class="btn btn-primary hide">New Row</button>
+               </div>
+               
+            </div>
             
-            <table>
-                <caption style="caption-side:top ;margin-top: 10px;">Targets Amount(Monthly)</caption>
-                <thead>
-                    <tr>
-                        <th>Target Team</th>
-                        <th>Jan</th>
-                        <th>Feb</th>
-                        <th>Mar</th>
-                        <th>Apr</th>
-                        <th>May</th>
-                        <th>Jun</th>
-                        <th>Jul</th>
-                        <th>Aug</th>
-                        <th>Sep</th>
-                        <th>Oct</th>
-                        <th>Nov</th>
-                        <th>Dec</th>
-                        <th>Total Qty</th>
 
-                    </tr>
-                </thead>
-                <tbody id="tableBodyAmount">
-                   <!-- td will render here form javascript -->
-                    <tr  id="emptyDataAmount" >
-                        <td colspan="14" colr class="text-center">
-                            
-                            <p style="padding: 50px;">No data</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="button-group text-right mt-3">
+            <div class="btn-group-right text-right mt-3">
                 <button class="btn btn-primary" id="btnSave" onclick="save_data()" style="display: none;">Save</button>
             </div>
+            
 
     </section>
 </div>

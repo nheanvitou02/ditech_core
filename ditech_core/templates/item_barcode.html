@@ -8,9 +8,9 @@
       height: 3cm;
       line-height: 18px;
       display: flex;
-      padding: 0 13px;
+      padding: 0 8px;
       align-items: center;
-      font-weight: bold; 
+      font-weight: bold;
     "
   >
     <div style="width: 100%">
@@ -22,11 +22,8 @@
           align-items: center;
         "
       >
-        <div>
-          <div>{{b.company}}</div>
-          <div class="text-clamp" style="font-size: 11px; width: 3cm">
-            {{b.item_name}}
-          </div>
+        <div class="text-clamp" style="font-size: 12px; width: 3cm">
+          {{b.item_name}}
         </div>
         {% if b.price %}
         <div
@@ -34,7 +31,7 @@
             width: 2cm;
             white-space: nowrap;
             overflow: visible;
-            font-size: 11px;
+            font-size: 12px;
             text-align: right;
           "
         >
@@ -56,7 +53,7 @@
       width: 1.7,
       height: 30,
       displayValue: true,
-      fontSize: 14,
+      fontSize: 12,
     });
   </script>
   {% endfor %}
@@ -68,7 +65,7 @@
   }
   .text-clamp {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

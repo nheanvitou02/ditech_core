@@ -108,6 +108,8 @@ jinja = {
 # before_install = "ditech_core.install.before_install"
 # after_install = "ditech_core.install.after_install"
 
+before_install = "ditech_core.utils.install_dependencies"
+
 after_migrate = "ditech_core.setup.after_migration"
 
 # Uninstallation
@@ -200,9 +202,9 @@ doc_events = {
     "Pricing Rule": {
         "before_save": "ditech_core.overrides.before_save_pricing_rule",
     },
-    "Sales Person": {
-        "before_save": "ditech_core.overrides.before_save_sale_person",
-    },
+    # "Sales Person": {
+    #     "before_save": "ditech_core.overrides.before_save_sale_person",
+    # },
     "Monthly Distribution": {
         "before_insert": "ditech_core.overrides.before_insert_monthly_distribution",
     },

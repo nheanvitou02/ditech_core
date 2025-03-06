@@ -1488,10 +1488,9 @@ def make_item_field_sale_person():
                 "fieldname": "target_team",
                 "fieldtype": "Table",
                 "label": "Targets",
-                "insert_after": "target_team_monthly",
+                "insert_after": "targets",
                 "options": "Target Doc",
                 "module": "ditech_core",
-                "read_only": 1
             },
    
         ]
